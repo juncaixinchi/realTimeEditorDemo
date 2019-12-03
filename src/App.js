@@ -1,7 +1,7 @@
 import React from 'react';
-import io from 'socket.io-client';
-import logo from './logo.svg';
 import CodeMirror from 'codemirror';
+import io from 'socket.io-client';
+
 import 'codemirror/lib/codemirror.css';
 import './App.css';
 
@@ -11,10 +11,9 @@ class App extends React.Component {
     this.state = { msg: '' };
     this.currentDoc = { timestamp: -1, doc: '' }
   }
+
   componentDidMount() {
-
-    const socket = io('http://localhost:8000');
-
+    const socket = io('http://localhost:3000');
     this.codemirror = CodeMirror(this.ref, {
       value: this.currentDoc.doc,
       mode: "javascript",
@@ -48,13 +47,9 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div style={{ color: 'black', margin: 0, padding: 0 }} ref={(ref) => this.ref = ref} />
-      </div>
+      <div ref={(ref) => this.ref = ref} />
     );
   }
 }
-
-
 
 export default App;

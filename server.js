@@ -8,7 +8,9 @@ const io = require('socket.io')(server);
 
 app.use('/', express.static(__dirname + '/build'));
 
-server.listen(8000);
+const port = 3000
+
+server.listen(port, () => console.log(`server started on http://localhost:${port}`));
 
 let file = fs.readFileSync(__dirname + '/test/index.js').toString();
 
